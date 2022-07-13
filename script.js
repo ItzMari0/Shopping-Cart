@@ -24,9 +24,7 @@ const createProductItemElement = ({ sku, name, image }) => {
 
 const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
 
-const cartItemClickListener = (event) => {
-  // coloque seu código aqui
-};
+const cartItemClickListener = (event) => event.target.remove('li');
 
 const createCartItemElement = ({ sku, name, salePrice }) => {
   const li = document.createElement('li');
@@ -45,4 +43,24 @@ const filterProducts = async () => {
   });
 };
 
-window.onload = () => { filterProducts(); };
+const addCartItem = async (item) => {
+  const itemInfo = await fetchItem(item);
+  const filter = createCartItemElement({ sku: itemInfo.id, 
+    name: itemInfo.title,
+    salePrice: itemInfo.price,
+  });
+  const cartItems = document.querySelector('.cart__items');
+  cartItems.appendChild(filter);
+};
+
+const addCartItemEvent = (event) => {
+  const items = event.target.parentNode;
+  const id = items.firstChild.innerText;
+  addCartItem(id);
+};
+
+window.onload = async () => { 
+  await filterProducts(); 
+  document.querySelectorAll('.item__add')
+    .forEach((item) => item.addEventListener('click', addCartItemEvent));
+};

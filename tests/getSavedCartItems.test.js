@@ -10,7 +10,7 @@ describe('4 - Teste a função getSavedCartItems', () => {
   });
 
   it('Se ao executar a função getSavedCartItems, o método localStorage.getItem é chamado com o parâmetro "cartItems"', () => {
-    getSavedCartItems();
+    getSavedCartItems('cartItems');
     expect(localStorage.getItem).toHaveBeenCalledWith('cartItems');
   });
 

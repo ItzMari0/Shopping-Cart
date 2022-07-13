@@ -44,10 +44,10 @@ const filterProducts = async () => {
 };
 
 const addCartItem = async (item) => {
-  const itemInfo = await fetchItem(item);
-  const filter = createCartItemElement({ sku: itemInfo.id, 
-    name: itemInfo.title,
-    salePrice: itemInfo.price,
+  const info = await fetchItem(item);
+  const filter = createCartItemElement({ sku: info.id, 
+    name: info.title,
+    salePrice: info.price,
   });
   const cartItems = document.querySelector('.cart__items');
   cartItems.appendChild(filter);

@@ -67,8 +67,9 @@ const createCartItemElement = ({ sku, name, salePrice }) => {
 
 const filterProducts = async () => {
   const items = document.querySelector('.items');
-  const load = document.querySelector('loading');
-  load.innerText = 'carregando...';
+  const load = document.createElement('div');
+  load.className = 'loading';
+  load.innerText = 'carregando';
   items.appendChild(load);
   const { results } = await fetchProducts('computador');
   load.style.display = 'none';

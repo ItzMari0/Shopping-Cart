@@ -72,7 +72,7 @@ const filterProducts = async () => {
   load.innerText = 'carregando...';
   items.appendChild(load);
   const { results } = await fetchProducts('computador');
-  load.innerHTML = '';
+  load.style.display = 'none';
   results.forEach(({ id: sku, title: name, thumbnail: image }) => {
     const product = createProductItemElement({ sku, name, image });
     items.appendChild(product);

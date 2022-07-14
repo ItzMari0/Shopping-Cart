@@ -69,10 +69,10 @@ const filterProducts = async () => {
   const items = document.querySelector('.items');
   const load = document.createElement('div');
   load.className = 'loading';
-  load.innerText = 'carregando';
+  load.innerText = 'carregando...';
   items.appendChild(load);
   const { results } = await fetchProducts('computador');
-  load.style.display = 'none';
+  load.remove();
   results.forEach(({ id: sku, title: name, thumbnail: image }) => {
     const product = createProductItemElement({ sku, name, image });
     items.appendChild(product);

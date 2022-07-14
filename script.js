@@ -27,7 +27,7 @@ const createProductItemElement = ({ sku, name, image }) => {
 
 // const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
 
-const sumPrices = () => {
+const sumPrices = async () => {
   const li = document.querySelectorAll('.cart__item');
   const split = [...li].map((item) => item.innerText).map((item) => {
     const array = item.split(' | ');
@@ -72,7 +72,7 @@ const filterProducts = async () => {
   load.innerText = 'carregando...';
   items.appendChild(load);
   const { results } = await fetchProducts('computador');
-  load.innerText = '';
+  load.innerHTML = '';
   results.forEach(({ id: sku, title: name, thumbnail: image }) => {
     const product = createProductItemElement({ sku, name, image });
     items.appendChild(product);

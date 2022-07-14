@@ -27,7 +27,7 @@ const createProductItemElement = ({ sku, name, image }) => {
 
 // const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
 
-const sumPrices = async () => {
+const sumPrices = () => {
   const li = document.querySelectorAll('.cart__item');
   const split = [...li].map((item) => item.innerText).map((item) => {
     const array = item.split(' | ');
@@ -40,7 +40,7 @@ const sumPrices = async () => {
 
 const totalPrice = () => {
   const total = document.querySelector('.total-price');
-  total.innerText = `$${sumPrices()}`;
+  total.innerText = `${sumPrices()}`;
 };
 
 const cartItemClickListener = (event) => {
